@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Teacher;
+use Faker\Core\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TeacherController extends Controller
 {
@@ -41,4 +43,21 @@ class TeacherController extends Controller
 
     }
 
+    public function delete($id){
+
+        $te = Teacher::find($id);
+
+        // Storage::files('images')->delete($te->img);
+
+        // $te->delete();
+
+        
+        unlink('images/'.$te->img);
+        
+         $te->delete();
+
+         return redirect('/info');
+
+    }
+   
 }

@@ -10,6 +10,6 @@ class Teacher extends Model
     use HasFactory;
 
     protected $table = "teachers";
-    protected $primarykey = "teid";
+    protected $primaryKey = "teid";
 
 }

@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [TeacherController::class , 'index']);
 Route::post('/store', [TeacherController::class , 'store']);
 Route::get('/info', [TeacherController::class , 'info']);
+Route::get('/delete/{id}', [TeacherController::class , 'delete']);
 
 
