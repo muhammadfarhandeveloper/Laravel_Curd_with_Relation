@@ -18,5 +18,7 @@ Route::get('/', [TeacherController::class , 'index']);
 Route::post('/store', [TeacherController::class , 'store']);
 Route::get('/info', [TeacherController::class , 'info']);
 Route::get('/delete/{id}', [TeacherController::class , 'delete']);
+Route::get('/update/{id}', [TeacherController::class , 'update']);
+Route::post('/updatete/{id}', [TeacherController::class , 'updatete']);
 
 

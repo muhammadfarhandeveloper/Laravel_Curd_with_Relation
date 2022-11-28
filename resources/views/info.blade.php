@@ -26,6 +26,7 @@
             <td>{{ $item->email}}</td>
             <td>{{ $item->phone}}</td>
             <td><img src="images/{{ $item->img}}" width="60px"/></td>
+            <td><a href="{{url('/update') }}/{{$item->teid}}" class="btn btn-primary">Update</a></td>
             <td><a href="{{url('/delete') }}/{{$item->teid}}" class="btn btn-danger"> Delete</a></td>
         </tr>
         

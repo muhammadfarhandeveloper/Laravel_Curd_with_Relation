@@ -47,17 +47,65 @@ class TeacherController extends Controller
 
         $te = Teacher::find($id);
 
-        // Storage::files('images')->delete($te->img);
+        if(!is_null($te)){
 
-        // $te->delete();
-
+            
+            unlink('images/'.$te->img);
+            
+            $te->delete();
+        }
         
-        unlink('images/'.$te->img);
-        
-         $te->delete();
-
          return redirect('/info');
 
+    }
+    public function update($id){
+
+        $te = Teacher::find($id);
+
+        if(!is_null($te)){
+
+        return view('update')->with('te',$te);            
+
+        }
+
+        return redirect('info');
+    }
+    public function updatete(Request $req, $id){
+
+            $te = Teacher::find($id);
+
+            if(!is_null($te)){
+
+                if($req['image'] != null){
+
+                    $img =  $req['image'];
+        
+                    $name = $img->getClientOriginalName();
+                    
+                    $img->move('images',$name);
+
+                    unlink('images/'.$req['oldimg']);
+                    
+                    $te->name = $req['name'];
+                    $te->age = $req['age'];
+                    $te->email = $req['email'];
+                    $te->phone = $req['phone'];
+                    $te->img = $name;
+                    $te->save();
+                }
+                else{
+                     
+                    $te->name = $req['name'];
+                    $te->age = $req['age'];
+                    $te->email = $req['email'];
+                    $te->phone = $req['phone'];
+                    $te->save();
+                }
+
+            }
+
+            return redirect('/info');
+            
     }
    
 }
